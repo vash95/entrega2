@@ -3,7 +3,7 @@ package uva.poo.entrega2;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
+//clase
 public class Pack extends Vendible {
 
 	private ArrayList<Producto> contenido;
