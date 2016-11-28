@@ -119,4 +119,15 @@ public class Pack extends Vendible {
 		}
 		setPrecio(precioPack-=precioPack*0.2);
 	}
+	
+	public boolean equals(Pack otro){
+		  if(getNombre()==otro.getNombre() && getPrecio()==otro.getPrecio()
+				  && getIdentificador()==otro.getIdentificador() && getCantidad()==otro.getCantidad() 
+				  && getContenido()==otro.getContenido()){
+			  return true;
+			  }
+		  else{
+			  return false;
+		  }
+	  }
 }

@@ -1,7 +1,7 @@
 package uva.poo.entrega2;
 /**
- * Práctica 2 de Programación Orientada a Objetos
- * Implementación de productos con nombre, precio y UCP.
+ * Prï¿½ctica 2 de Programaciï¿½n Orientada a Objetos
+ * Implementaciï¿½n de productos con nombre, precio y UCP.
  * Los productos heredan de la la clase Vendible
  * @author alvbeni
  * @author miggonz
@@ -10,7 +10,7 @@ package uva.poo.entrega2;
 public class Producto extends Vendible{
 	/**
 	 * Inicializa una instancia de la clase Producto con los valores dados como argumento
-	 * El dígito de control se autentifica automáticamente
+	 * El dï¿½gito de control se autentifica automï¿½ticamente
 	 * @param nombre String con el nombre
 	 * @param precio double que indica el precio de un producto en euros
 	 * @param upc String con los dÃ­gitos 12 del UPC, incluyendo el de control
@@ -31,7 +31,7 @@ public class Producto extends Vendible{
 		  assert (DigitoDeControlValido(upc));
 	  }
 	  /**
-	   * Comprueba que el dígito de control del UPC es correcto
+	   * Comprueba que el dï¿½gito de control del UPC es correcto
 	   * Devuelve "true" si es correcto
 	   * @param upc String del UPC del producto
 	   * @return boolean
@@ -58,7 +58,7 @@ public class Producto extends Vendible{
 				return false;
 			  }
 	  private static boolean UPCValido(String cad){
-		//Comprueba si un String que contiene el UPC es solo números
+		//Comprueba si un String que contiene el UPC es solo nï¿½meros
 		    boolean valido=true;
 		    for (int i=0; i<cad.length(); i++){
 		      //Comprueba que el digito sea un numero
@@ -71,19 +71,18 @@ public class Producto extends Vendible{
 	   * Cambia el UPC del producto
 	   * @param upc String con el nuevo upc
 	   * @assert.pre upc!=null - El UPC no puede ser nulo
-	   * @assert.pre upc.length()==12 - El UPC debe tener 12 dígitos
-	   * @assert.pre UPCValido(upc) - EL UPC debe ser un número
+	   * @assert.pre upc.length()==12 - El UPC debe tener 12 dï¿½gitos
+	   * @assert.pre DigitoDeControlValido(upc) - EL UPC debe ser un nï¿½mero y el ultimo digito 
 	   */
 	  @Override
 	  public void setIdentificador(String upc){
 		  assert (upc!=null);
 		  assert (upc.length()==12);
-		  assert (UPCValido(upc));
 		  assert(DigitoDeControlValido(upc));
 		  super.setIdentificador(upc);
 	  }
 	  /**
-	   * Devuelve un String con la información del producto
+	   * Devuelve un String con la informaciï¿½n del producto
 	   */
 	  @Override
 	  public String toString(){
