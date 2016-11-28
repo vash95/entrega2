@@ -32,10 +32,10 @@ public class Producto extends Vendible{
     assert (precio>0);
     assert (upc!=null);
     assert (upc.length()==12):"upc no valido";
-    assert (DigitoDeControl(upc));
+    assert (DigitoDeControlValido(upc));
   }
   //comentarlo
-  public boolean DigitoDeControl(String upc){
+  public boolean DigitoDeControlValido(String upc){
     //Método que cambia el valor de UPC para añadir el dígito de control 
 	if(UPCValido(upc)){
     int s=0,a,m;
@@ -68,23 +68,12 @@ public class Producto extends Vendible{
       }
     }return valido;
   }
-  /**
-   * Cambia el precio del producto
-   * @param precio double con el nuevo precio en euros
-   * @assert.pre precio>0 - El precio debe ser estrictamente positivo
-   */
-  @Override
-  public void setPrecio(double precio) {
-          assert (precio>0);
-          super.setPrecio(precio);
-  }
     /**
      * Devuelve el upc del producto
      * @return upc String con el upc
      */
-  public String getUpc() {
-           return super.getIdentificador();
-  }
+  
+  
   /**
   * Cambia el upc del producto
   * @param upc String con el nuevo upc
@@ -92,11 +81,12 @@ public class Producto extends Vendible{
   * @assert.pre upc.length()==12 - El UPC debe tener 12 dígitos
   * @assert.pre UPCValido(upc) - EL UPC debe ser un número
   */
-  public void setUpc(String upc) {
+  @Override
+  public void setIdentificador(String upc) {
     assert (upc!=null);
     assert (upc.length()==12);
     assert (UPCValido(upc));
-    assert(DigitoDeControl(upc));
+    assert(DigitoDeControlValido(upc));
     super.setIdentificador(upc);
   }
   /**
@@ -104,7 +94,7 @@ public class Producto extends Vendible{
    */
   @Override
   public String toString(){
-	  return "Nombre del producto: "+getNombre()+", precio: "+getPrecio()+" euros, UPC: "+getUpc();
+	  return "Nombre del producto: "+getNombre()+", precio: "+getPrecio()+" euros, UPC: "+getIdentificador();
   }
   /**
    * Indica si dos productos son iguales o no
@@ -112,7 +102,7 @@ public class Producto extends Vendible{
    * @return boolean true si son los dos productos iguales
    */
   public boolean equals(Producto otro){
-    if(getNombre()==otro.getNombre() && getPrecio()==otro.getPrecio() && getUpc()==otro.getUpc()){
+    if(getNombre()==otro.getNombre() && getPrecio()==otro.getPrecio() && getIdentificador()==otro.getIdentificador()){
       return true;
     }
     else

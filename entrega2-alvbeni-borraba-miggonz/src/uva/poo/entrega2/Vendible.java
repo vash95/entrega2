@@ -9,7 +9,7 @@ public abstract class Vendible {
 	 public Vendible(String nombre,String identificador){
 		 this.nombre=nombre;
 		 this.identificador=identificador;
-	}
+	 }
 	 
 	 public Vendible(String nombre,double precio,String identificador){
 		 this.nombre=nombre;
@@ -37,9 +37,9 @@ public abstract class Vendible {
 	  * @assert.pre nombre!="" - El nombre no puede ser una cadena vacía
 	  */
 	 public void setNombre(String nombre) {
-	    assert (nombre!=null);
-	    assert (!nombre.trim().equals(""));  
-	        this.nombre = nombre;
+		 assert (nombre!=null);
+		 assert (!nombre.trim().equals(""));  
+	     this.nombre = nombre;
 	  }
 	 /**
 	   * Cambia el precio del producto
@@ -47,14 +47,15 @@ public abstract class Vendible {
 	   * @assert.pre precio>0 - El precio debe ser estrictamente positivo
 	   */
 	  public void setPrecio(double precio) {
-	            this.precio = precio;
+		  assert(precio>0);
+		  this.precio = precio;
 	  }
 	  public String getIdentificador(){
-			 return identificador;
-		 }
+		  return identificador;
+	  }
 	  
 	  public void setIdentificador(String id){
 		  this.identificador = id;
-		 }
+	  }
 	 
 }

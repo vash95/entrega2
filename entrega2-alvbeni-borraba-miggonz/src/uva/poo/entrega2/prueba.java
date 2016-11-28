@@ -9,13 +9,18 @@ public class prueba {
 		Producto b=new Producto("POLLO", 5.0, "123456789012");
 		Producto c=new Producto("PATATAS", 10.0, "098765432112");
 		
-		lista[0]=new Producto("POLLO", 5.0, "123456789012");
+		lista[0]=b;
 		//lista[1]=new Producto("POLLO", 5.0, "123456789012");
-		lista[1]=new Producto("PATATAS", 10.0, "098765432112");
+		lista[1]=c;
 		
 		Pack a = new Pack("pack", "123455", lista);
 		System.out.println(a.getPrecio());
-		//System.out.println(a.equals(c));
+		c.setPrecio(20);
+		System.out.println(a.getPrecio());
+		
+		System.out.println(b.getIdentificador());
+		
+		System.out.println(a.getPrecio());
 	}
 
 }
