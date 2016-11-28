@@ -1,7 +1,7 @@
 package uva.poo.entrega2;
 /**
- * Práctica 2 de Programación Orientada a Objetos
- * Implementación de instancias abstractas que son vendibles
+ * Prï¿½ctica 2 de Programaciï¿½n Orientada a Objetos
+ * Implementaciï¿½n de instancias abstractas que son vendibles
  * @author alvbeni
  * @author miggonz
  * @author borraba
@@ -17,7 +17,7 @@ public abstract class Vendible {
 	  * @param precio double con el precio
 	  * @param identificador String con el identificador 
 	  * @assert.pre nombre!=null - El nombre no puede ser nulo
-	  * @assert.pre nombre!="" - El nombre no puede ser una cadena vacía
+	  * @assert.pre nombre!="" - El nombre no puede ser una cadena vacï¿½a
 	  */
 	 public Vendible(String nombre,double precio,String identificador){
 		 assert (nombre!=null);
@@ -44,7 +44,7 @@ public abstract class Vendible {
 	  * Cambia el nombre del producto
 	  * @param nombre String nombre del producto
 	  * @assert.pre nombre!=null - El nombre no puede ser nulo
-	  * @assert.pre nombre!="" - El nombre no puede ser una cadena vacía
+	  * @assert.pre nombre!="" - El nombre no puede ser una cadena vacï¿½a
 	  */
 	 public void setNombre(String nombre) {
 		 assert (nombre!=null);
@@ -72,5 +72,4 @@ public abstract class Vendible {
 	  public void setIdentificador(String id){
 		  this.identificador = id;
 	  }
-	 
 }
