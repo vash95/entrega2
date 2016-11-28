@@ -1,21 +1,39 @@
 package uva.poo.entrega2;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-
-//clase
+/**
+ * Práctica 2 de Programación Orientada a Objetos
+ * Implementación de packs de productos
+ * Los productos de un pack son distintos entre sí
+ * Un pack cuesta un 20% menos que la suma de los precios de sus productos individuales
+ * Los packs heredan de la clase Vendible
+ * @author alvbeni
+ * @author miggonz
+ * @author borraba
+ */
 public class Pack extends Vendible {
-
+	//Atributo de la clase
 	private Producto contenido[];
-	
-	public Pack(String nombre, String identificador, Producto[] productos){
-		super(nombre,identificador);
+	/**
+	 * Inicialización de un pack de productos con nombre, precio
+	 * @param nombre String con el nombre
+	 * @param precio double precio (no se tiene en cuenta)
+	 * @param identificador String con el identificador
+	 * @param productos array con los Productos a meter en el pack
+	 * @assert.pre getContenido().length>2 - El pack debe tener como mínimo 2 productos
+	 * @assert.pre distintos==true - Los productos deben de ser distintos
+	 */
+	public Pack(String nombre, double precio, String identificador, Producto[] productos){
+		super(nombre, precio, identificador);
 		contenido = productos;
 		assert(getContenido().length>=2);
 		assert(distintos());
 		setPrecio();
 		
 	}
+	/**
+	 * Comprueba que los productos de un pack son distintos
+	 * Devuelve "true" si son distintos
+	 * @return boolean
+	 */
 	public boolean distintos(){
 	for(int i=0;i<getContenido().length-1;i++){
 		for(int j=i+1;j<getContenido().length;j++){
@@ -46,6 +64,13 @@ public class Pack extends Vendible {
 		return getContenido().length;
 	}
 	*/
+	/**
+	 * Informa de si el pack contiene o no el producto indicado
+	 * Devuelve "true" si el pack contiene el producto
+	 * @param p Producto buscado
+	 * @return boolean
+	 * @assert.pre p.equals(null) - El producto indicado no puede ser nulo
+	 */
 	public boolean contiene(Producto p){
 		assert(p.equals(null));
 		boolean contiene=false;
@@ -56,9 +81,13 @@ public class Pack extends Vendible {
 		}
 		return contiene;
 	}
+	/**
+	 * Devuelve el pack
+	 * @return contenido array de productos
+	 */
 	public Producto[] getContenido() {
-		   return contenido;
-	   }
+		return contenido;
+	}
 	private void setPrecio() {
 		double precioPack=0;
 		for(Producto e:contenido){
