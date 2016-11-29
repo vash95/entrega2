@@ -1,31 +1,30 @@
 package uva.poo.entrega2;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class ProductoTest {
 	@Test
 	public void testProducto() {
-		Producto pipas = new Producto("pipas", 5.0, "12345678912");
+		Producto pipas = new Producto("pipas", 5.0, "123456789012");
 		assertEquals(pipas.getNombre(), "pipas");
 		assertEquals(5.0, pipas.getPrecio(), 0.01);
 	}
 	@Test(expected=java.lang.AssertionError.class)
 	public void testProductoInvalidoNombreNulo(){
-		Producto pipas = new Producto(null, 5.0, "12345678912");
+		Producto pipas = new Producto(null, 5.0, "123456789012");
 	}
 	@Test(expected=java.lang.AssertionError.class)
 	public void testProductoInvalidoNombreVacio(){
-		Producto vacio = new Producto ("",3.0, "12345678912");
+		Producto vacio = new Producto ("",3.0, "123456789012");
 	}
 	@Test(expected=java.lang.AssertionError.class)
 	public void testProductoInvalidoPrecioCero(){
-		Producto pipas = new Producto("pipas", 0.0, "12345678912");
+		Producto pipas = new Producto("pipas", 0.0, "123456789012");
 	}
 	@Test(expected=java.lang.AssertionError.class)
 	public void testProductoInvalidoPrecioNegativo(){
-		Producto pipas = new Producto("pipas", -1.0, "12345678912");
+		Producto pipas = new Producto("pipas", -1.0, "123456789012");
 	}
 	@Test(expected=java.lang.AssertionError.class)
 	public void testProductoInvalidoUPCNulo(){
@@ -39,95 +38,54 @@ public class ProductoTest {
 	public void testProductoInvalidoDigitoDeControlInvalido(){
 		Producto pipas = new Producto ("pipas",3.0,"123456789013");
 	}
-//Fin constructor
 	@Test
-	public void testVendible() {
-		fail("Not yet implemented");
+	public void testDigitoDeControlValidoCorrecto(){
+		Producto a = new Producto("pipas", 5.0, "123456789012");
+		assertTrue(a.DigitoDeControlValido(a.getIdentificador()));
 	}
-
 	@Test
-	public void testGetNombre() {
-		fail("Not yet implemented");
+	public void testSetIdentificadorValido() {
+		Producto correcto = new Producto("pipas", 5.0, "123456789012");
+		correcto.setIdentificador("123456789012");
+		assertEquals(correcto.getIdentificador(),"123456789012");
 	}
-
-	@Test
-	public void testGetPrecio() {
-		fail("Not yet implemented");
+	@Test(expected=java.lang.AssertionError.class)
+	public void testSetIdentificadorInvalidoNull(){
+		Producto error = new Producto("pipas",5.0, null);
 	}
-
-	@Test
-	public void testSetNombre() {
-		fail("Not yet implemented");
+	@Test(expected=java.lang.AssertionError.class)
+	public void testSetIdentificadorInvalidoLongMenorA12(){
+		Producto error = new Producto("pipas", 5.0, "1234567890123");
+		error.setIdentificador("123456789012");
 	}
-
+	@Test(expected=java.lang.AssertionError.class)
+	public void testSetIdentificadorInvalidoLongMayorrA12(){
+		Producto error = new Producto("pipas", 5.0, "1234567890123");
+		error.setIdentificador("12345678901234");
+	}
+	@Test(expected=java.lang.AssertionError.class)
+	public void testSetIdentificadorInvalidoDigitoControlInvalido(){
+		Producto error = new Producto("pipas", 5.0, "1234567890123");
+		error.setIdentificador("1234567890124");
+	}
 	@Test
+	public void testToStringValido(){
+		Producto p = new Producto ("hola",1.0,"123456789012");
+		String s="Nombre del producto: hola, precio: 1.0 euros, UPC: 123456789012";
+		assertTrue(s.equals(p.toString()));
+	}
+	@Test
+	public void testEqualsValido() {
+		Producto p = new Producto ("hola",1.0,"123456789012");
+		Producto q = new Producto ("hola",1.0,"123456789012");
+		assertNotSame(p,q);
+		assertTrue(q.equals(p));
+	}
 	public void testSetPrecio() {
 		fail("Not yet implemented");
 	}
-
 	@Test
 	public void testGetIdentificador() {
 		fail("Not yet implemented");
 	}
-
-	@Test
-	public void testObject() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetClass() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testHashCode() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testEqualsObject() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testClone() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testToString1() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNotify() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNotifyAll() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLong() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLongInt() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWait() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testFinalize() {
-		fail("Not yet implemented");
-	}
-
 }

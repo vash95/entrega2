@@ -1,6 +1,6 @@
 package uva.poo.entrega2;
 /**
- * Prï¿½ctica 2 de Programaciï¿½n Orientada a Objetos
+ * Práctica 2 de Programación Orientada a Objetos
  * Implementaciï¿½n de productos con nombre, precio y UCP.
  * Los productos heredan de la la clase Vendible
  * @author alvbeni
