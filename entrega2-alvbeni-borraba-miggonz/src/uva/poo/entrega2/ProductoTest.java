@@ -5,32 +5,41 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class ProductoTest {
-
-	@Test
-	public void testSetIdentificador() {
-		fail("Not yet implemented");
-	}
-
 	@Test
 	public void testProducto() {
-		fail("Not yet implemented");
+		Producto pipas = new Producto("pipas", 5.0, "12345678912");
+		assertEquals(pipas.getNombre(), "pipas");
+		assertEquals(5.0, pipas.getPrecio(), 0.01);
 	}
-
-	@Test
-	public void testDigitoDeControlValido() {
-		fail("Not yet implemented");
+	@Test(expected=java.lang.AssertionError.class)
+	public void testProductoInvalidoNombreNulo(){
+		Producto pipas = new Producto(null, 5.0, "12345678912");
 	}
-
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
+	@Test(expected=java.lang.AssertionError.class)
+	public void testProductoInvalidoNombreVacio(){
+		Producto vacio = new Producto ("",3.0, "12345678912");
 	}
-
-	@Test
-	public void testEqualsProducto() {
-		fail("Not yet implemented");
+	@Test(expected=java.lang.AssertionError.class)
+	public void testProductoInvalidoPrecioCero(){
+		Producto pipas = new Producto("pipas", 0.0, "12345678912");
 	}
-
+	@Test(expected=java.lang.AssertionError.class)
+	public void testProductoInvalidoPrecioNegativo(){
+		Producto pipas = new Producto("pipas", -1.0, "12345678912");
+	}
+	@Test(expected=java.lang.AssertionError.class)
+	public void testProductoInvalidoUPCNulo(){
+		Producto pipas = new Producto ("pipas",3.0, null);
+	}
+	@Test(expected=java.lang.AssertionError.class)
+	public void testProductoInvalidoUPCLargo(){
+		Producto pipas = new Producto ("pipas",3.0, "1234567890123");
+	}
+	@Test(expected=java.lang.AssertionError.class)
+	public void testProductoInvalidoDigitoDeControlInvalido(){
+		Producto pipas = new Producto ("pipas",3.0,"123456789013");
+	}
+//Fin constructor
 	@Test
 	public void testVendible() {
 		fail("Not yet implemented");
