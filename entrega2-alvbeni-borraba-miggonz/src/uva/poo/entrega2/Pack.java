@@ -1,6 +1,5 @@
 package uva.poo.entrega2;
 
-import java.util.Arrays;
 
 /**
  * Pr�ctica 2 de Programaci�n Orientada a Objetos
@@ -122,16 +121,31 @@ public class Pack extends Vendible {
 		}
 		setPrecio(precioPack-=precioPack*0.2);
 	}
+	
 	public String toString(){
 		String contenedor="";
 		for(Producto e:getContenido())
 			contenedor+=" "+e.toString();
 		return  "Nombre del Pack: "+getNombre()+", precio: "+getPrecio()+" euros, ID: "+getIdentificador()+" Contenido: (" +contenedor+")";
 	}
+	private boolean sonIgualesArrays(Pack otro){
+		int contador=0;
+		if(getCantidad()==otro.getCantidad()){
+			for(Producto e:otro.getContenido()){
+				if(contiene(e)){
+					contador++;
+				}
+			}
+			if(contador==getCantidad()){
+				return true;
+			}
+		}		
+		return false;
+	}
 	
 	public boolean equals(Pack otro){
 		  if(getNombre().equals(otro.getNombre()) && getPrecio()==otro.getPrecio()
-				  && getIdentificador().equals(otro.getIdentificador()) && getCantidad()==otro.getCantidad() ){
+				  && getIdentificador().equals(otro.getIdentificador()) && getCantidad()==otro.getCantidad() && sonIgualesArrays(otro) ){
 			  return true;
 			  }
 		  else{
