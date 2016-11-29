@@ -1,4 +1,7 @@
 package uva.poo.entrega2;
+
+import java.util.Arrays;
+
 /**
  * Pr�ctica 2 de Programaci�n Orientada a Objetos
  * Implementaci�n de packs de productos
@@ -119,11 +122,16 @@ public class Pack extends Vendible {
 		}
 		setPrecio(precioPack-=precioPack*0.2);
 	}
+	public String toString(){
+		String contenedor="";
+		for(Producto e:getContenido())
+			contenedor+=" "+e.toString();
+		return  "Nombre del Pack: "+getNombre()+", precio: "+getPrecio()+" euros, ID: "+getIdentificador()+" Contenido: (" +contenedor+")";
+	}
 	
 	public boolean equals(Pack otro){
-		  if(getNombre()==otro.getNombre() && getPrecio()==otro.getPrecio()
-				  && getIdentificador()==otro.getIdentificador() && getCantidad()==otro.getCantidad() 
-				  && getContenido()==otro.getContenido()){
+		  if(getNombre().equals(otro.getNombre()) && getPrecio()==otro.getPrecio()
+				  && getIdentificador().equals(otro.getIdentificador()) && getCantidad()==otro.getCantidad() ){
 			  return true;
 			  }
 		  else{

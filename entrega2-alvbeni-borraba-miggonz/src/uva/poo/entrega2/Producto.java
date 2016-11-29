@@ -19,7 +19,7 @@ public class Producto extends Vendible{
 	 * @assert.pre precio>0 - El precio debe ser estrictamente positivo
 	 * @assert.pre upc!=null - El UPC no puede ser nulo
 	 * @assert.pre upc.length()==12 - El UPC debe tener 12 dígitos
-	 * @assert.pre UPCValido(upc) - EL UPC debe ser un número
+	 * @assert.pre DigitoDeControlValido(upc) - EL UPC debe ser un n�mero y el ultimo digito
 	 */
 	  public Producto(String nombre, double precio, String upc){
 		  super(nombre,precio,upc);
