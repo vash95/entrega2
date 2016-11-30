@@ -1,10 +1,9 @@
 package uva.poo.entrega2;
-
-
 /**
- * Prï¿½ctica 2 de Programaciï¿½n Orientada a Objetos
- * Implementaciï¿½n de packs de productos
- * Los productos de un pack son distintos entre sï¿½
+ * Practica 2 de Programacion Orientada a Objetos
+ * Implementacion de packs de productos y servicios realcionados con la modificacion de los mismos
+ * Un pack contienen más de un producto
+ * Los productos de un pack son distintos entre ellos
  * Un pack cuesta un 20% menos que la suma de los precios de sus productos individuales
  * Los packs heredan de la clase Vendible
  * @author alvbeni
@@ -15,12 +14,12 @@ public class Pack extends Vendible {
 	//Atributo de la clase
 	private Producto contenido[];
 	/**
-	 * Inicializaciï¿½n de un pack de productos con nombre, precio
+	 * Inicializacion de un pack de productos con nombre, precio
 	 * @param nombre String con el nombre
 	 * @param precio double precio (no se tiene en cuenta)
 	 * @param identificador String con el identificador
 	 * @param productos array con los Productos a meter en el pack
-	 * @assert.pre getContenido().length>2 - El pack debe tener como mï¿½nimo 2 productos
+	 * @assert.pre getContenido().length>2 - El pack debe tener como minimo 2 productos
 	 * @assert.pre distintos==true - Los productos deben de ser distintos
 	 */
 	public Pack(String nombre, String identificador, Producto[] productos){
@@ -43,7 +42,13 @@ public class Pack extends Vendible {
 			}
 			return true;
 	}
-	public void addProducto(Producto p){
+	/**
+	 * Agrega un nuevo producto al pack
+	 * @param p Producto nuevo a agregar al pack
+	 * @assert.pre p!=null - El producto a agregar no puede ser nulo
+	 * @assert.pre !contiene(p)- El producto a agregar no puede estar ya en el pack
+	 */
+	public void agregaProducto(Producto p){
 		assert(p!=null);
 		assert(!contiene(p));
 		Producto contenidoTmp[] = new Producto[getCantidad()+1];
@@ -53,10 +58,17 @@ public class Pack extends Vendible {
 		contenidoTmp[getCantidad()+1]=p;
 		setContenido(contenidoTmp);
 	}
-	public void removeProducto(Producto p){
+	/**
+	 * Quita un producto del pack
+	 * @param p Producto a quitar del pack
+	 * @assert.pre p!=null - El producto a quitar no puede ser nulo
+	 * @assert.pre !contiene(p)- El producto a quitar no puede estar ya en el pack
+	 * @assert.pre getCantidad()>2 - El pack no puede quedarse con menos de dos productos
+	 */
+	public void quitaProducto(Producto p){
 		assert(p!=null);
-		assert(getCantidad()>2);
 		assert(contiene(p));
+		assert(getCantidad()>2);
 		Producto contenidoTmp[] = new Producto[getCantidad()-1];
 		int j=0;
 		for(int i=0;i<getCantidad();i++){
@@ -67,22 +79,32 @@ public class Pack extends Vendible {
 		}	
 		setContenido(contenidoTmp);
 	}
-	
-	public void addProductos(Producto p[]){
+	/**
+	 * Agrega varios productos a un pack
+	 * @param p array de productos a agregar al pack
+	 */
+	public void agregaProductos(Producto p[]){
 		for(Producto e:p){
-			addProducto(e);
+			agregaProducto(e);
 		}	
 	}
-	public void removeProductos(Producto p[]){
+	/**
+	 * Quita varios productos de un pack
+	 * @param p array de productos a quitar del pack
+	 */
+	public void quitaProductos(Producto p[]){
 		for(Producto e:p){
-			removeProducto(e);
+			quitaProducto(e);
 		}
 	}
-	//aÃ±adir y eliminar una lista(opcional)
+	/**
+	 * Devuelve la cantidad de productos que tiene un pack
+	 * Nota: se empieza a contar desde cero
+	 * @return
+	 */
 	public int getCantidad(){
 		return getContenido().length;
 	}
-	
 	/**
 	 * Informa de si el pack contiene o no el producto indicado
 	 * Devuelve "true" si el pack contiene el producto
@@ -107,10 +129,17 @@ public class Pack extends Vendible {
 	public Producto[] getContenido() {
 		return contenido;
 	}
+	/**
+	 * Cambia los productos que contiene el pack 
+	 * @param contenido
+	 */
 	public void setContenido(Producto[] contenido) {
 		this.contenido=contenido;
 	}
-	//getprecio
+	/**
+	 * Devuelve el precio del pack
+	 */
+	@Override
 	public double getPrecio() {
 		double precioPack=0;
 		for(Producto e:getContenido()){
@@ -119,7 +148,10 @@ public class Pack extends Vendible {
 		precioPack-=precioPack*0.2;
 		return precioPack;
 	}
-	
+	/**
+	 * Devuelve informacion sobre el pack
+	 */
+	@Override
 	public String toString(){
 		String contenedor="";
 		for(Producto e:getContenido())
@@ -127,6 +159,7 @@ public class Pack extends Vendible {
 		return  "Nombre del Pack: "+getNombre()+", precio: "+getPrecio()+" euros, ID: "+getIdentificador()+" Contenido: (" +contenedor+")";
 	}
 	private boolean sonIgualesArrays(Pack otro){
+		//Comprueba si dos arrays de productos son iguales
 		int contador=0;
 		if(getCantidad()==otro.getCantidad()){
 			for(Producto e:otro.getContenido()){
@@ -134,13 +167,20 @@ public class Pack extends Vendible {
 					contador++;
 				}
 			}
+			//Deben contener los mismos productos, aunque esten en diferentes posiciones
 			if(contador==getCantidad()){
 				return true;
 			}
 		}		
 		return false;
 	}
-	
+	/**
+	 * Comprueba si dos packs son iguales
+	 * Dos packs se consideran iguales si contienen los mismos productos
+	 * Devuelve "true" si son iguales
+	 * @param otro otro Pack para comparar
+	 * @return boolean
+	 */
 	public boolean equals(Pack otro){
 		  if(getNombre().equals(otro.getNombre()) && getPrecio()==otro.getPrecio()
 				  && getIdentificador().equals(otro.getIdentificador()) && getCantidad()==otro.getCantidad() && sonIgualesArrays(otro) ){

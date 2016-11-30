@@ -1,7 +1,7 @@
 package uva.poo.entrega2;
 /**
- * Pr�ctica 2 de Programaci�n Orientada a Objetos
- * Implementaci�n de productos con nombre, precio y UCP.
+ * Practica 2 de Programacion Orientada a Objetos
+ * Implementacion de productos con nombre, precio y UCP.
  * Los productos heredan de la la clase Vendible
  * @author alvbeni
  * @author miggonz
@@ -12,16 +12,16 @@ public class Producto extends Vendible{
 	private double precio;
 	/**
 	 * Inicializa una instancia de la clase Producto con los valores dados como argumento
-	 * El d�gito de control se autentifica autom�ticamente
+	 * El digito de control se autentifica automaticamente
 	 * @param nombre String con el nombre
 	 * @param precio double que indica el precio de un producto en euros
-	 * @param upc String con los dígitos 12 del UPC, incluyendo el de control
+	 * @param upc String con los digitos 12 del UPC, incluyendo el de control
 	 * @assert.pre nombre!=null - El nombre no puede ser nulo
-	 * @assert.pre nombre!="" - El nombre no puede ser una cadena vacía
+	 * @assert.pre nombre!="" - El nombre no puede ser una cadena vacia
 	 * @assert.pre precio>0 - El precio debe ser estrictamente positivo
 	 * @assert.pre upc!=null - El UPC no puede ser nulo
 	 * @assert.pre upc.length()==12 - El UPC debe tener 12 dígitos
-	 * @assert.pre DigitoDeControlValido(upc) - EL UPC debe ser un n�mero y el ultimo digito
+	 * @assert.pre DigitoDeControlValido(upc) - EL UPC debe ser un numero y el ultimo digito
 	 */
 	  public Producto(String nombre, double precio, String upc){
 		  super(nombre,upc);
@@ -34,7 +34,7 @@ public class Producto extends Vendible{
 		  assert (DigitoDeControlValido(upc));
 	  }
 	  /**
-	   * Comprueba que el d�gito de control del UPC es correcto
+	   * Comprueba que el digito de control del UPC es correcto
 	   * Devuelve "true" si es correcto
 	   * @param upc String del UPC del producto
 	   * @return boolean
@@ -61,7 +61,7 @@ public class Producto extends Vendible{
 				return false;
 			  }
 	  private static boolean UPCValido(String cad){
-		//Comprueba si un String que contiene el UPC es solo n�meros
+		//Comprueba si un String que contiene el UPC es solo numeros
 		    boolean valido=true;
 		    for (int i=0; i<cad.length(); i++){
 		      //Comprueba que el digito sea un numero
@@ -71,14 +71,17 @@ public class Producto extends Vendible{
 		    }return valido;
 	  }
 	  /**
-		  * Cambia el precio de la instancia vendible
-		  * @param precio double con el nuevo precio 
-		  */
-		 public void setPrecio(double precio) {
-			 this.precio = precio;
-		 }
-
-		public double getPrecio() {
+	   * Cambia el precio de la instancia vendible
+	   * @param precio double con el nuevo precio 
+	   */
+	  public void setPrecio(double precio) {
+		  this.precio = precio;
+	  }
+	  /**
+	   * Devuelve el precio del producto
+	   */
+	  @Override
+	  public double getPrecio() {
 			return precio;
 		}
 	  /**
