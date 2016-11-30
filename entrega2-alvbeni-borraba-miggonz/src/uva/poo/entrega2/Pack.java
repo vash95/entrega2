@@ -23,13 +23,11 @@ public class Pack extends Vendible {
 	 * @assert.pre getContenido().length>2 - El pack debe tener como m�nimo 2 productos
 	 * @assert.pre distintos==true - Los productos deben de ser distintos
 	 */
-	public Pack(String nombre, double precio, String identificador, Producto[] productos){
-		super(nombre, precio, identificador);
+	public Pack(String nombre, String identificador, Producto[] productos){
+		super(nombre, identificador);
 		contenido = productos;
-		assert(getCantidad()>=2);
+		assert(getCantidad()>=2);	
 		assert(distintos());
-		setPrecio();
-		
 	}
 	/**
 	 * Comprueba que los productos de un pack son distintos
@@ -45,7 +43,7 @@ public class Pack extends Vendible {
 			}
 			return true;
 	}
-	public void añadirUno(Producto p){
+	public void addProducto(Producto p){
 		assert(p!=null);
 		assert(!contiene(p));
 		Producto contenidoTmp[] = new Producto[getCantidad()+1];
@@ -54,9 +52,8 @@ public class Pack extends Vendible {
 			}
 		contenidoTmp[getCantidad()+1]=p;
 		setContenido(contenidoTmp);
-		setPrecio();
 	}
-	public void eliminarUno(Producto p){
+	public void removeProducto(Producto p){
 		assert(p!=null);
 		assert(getCantidad()>2);
 		assert(contiene(p));
@@ -69,17 +66,16 @@ public class Pack extends Vendible {
 			}
 		}	
 		setContenido(contenidoTmp);
-		setPrecio();
 	}
 	
-	public void añadirVarios(Producto p[]){
+	public void addProductos(Producto p[]){
 		for(Producto e:p){
-			añadirUno(e);
+			addProducto(e);
 		}	
 	}
-	public void eliminarVarios(Producto p[]){
+	public void removeProductos(Producto p[]){
 		for(Producto e:p){
-			eliminarUno(e);
+			removeProducto(e);
 		}
 	}
 	//añadir y eliminar una lista(opcional)
@@ -114,12 +110,14 @@ public class Pack extends Vendible {
 	public void setContenido(Producto[] contenido) {
 		this.contenido=contenido;
 	}
-	private void setPrecio() {
+	//getprecio
+	public double getPrecio() {
 		double precioPack=0;
 		for(Producto e:getContenido()){
 			precioPack+=e.getPrecio();
 		}
-		setPrecio(precioPack-=precioPack*0.2);
+		precioPack-=precioPack*0.2;
+		return precioPack;
 	}
 	
 	public String toString(){

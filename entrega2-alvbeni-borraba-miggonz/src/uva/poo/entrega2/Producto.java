@@ -1,6 +1,6 @@
 package uva.poo.entrega2;
 /**
- * Práctica 2 de Programación Orientada a Objetos
+ * Prï¿½ctica 2 de Programaciï¿½n Orientada a Objetos
  * Implementaciï¿½n de productos con nombre, precio y UCP.
  * Los productos heredan de la la clase Vendible
  * @author alvbeni
@@ -8,6 +8,8 @@ package uva.poo.entrega2;
  * @author borraba
  */
 public class Producto extends Vendible{
+	
+	private double precio;
 	/**
 	 * Inicializa una instancia de la clase Producto con los valores dados como argumento
 	 * El dï¿½gito de control se autentifica automï¿½ticamente
@@ -22,7 +24,8 @@ public class Producto extends Vendible{
 	 * @assert.pre DigitoDeControlValido(upc) - EL UPC debe ser un nï¿½mero y el ultimo digito
 	 */
 	  public Producto(String nombre, double precio, String upc){
-		  super(nombre,precio,upc);
+		  super(nombre,upc);
+		  this.precio=precio;
 		  assert (nombre!=null);
 		  assert (!nombre.trim().equals(""));
 		  assert (precio>0);
@@ -67,6 +70,17 @@ public class Producto extends Vendible{
 		      }
 		    }return valido;
 	  }
+	  /**
+		  * Cambia el precio de la instancia vendible
+		  * @param precio double con el nuevo precio 
+		  */
+		 public void setPrecio(double precio) {
+			 this.precio = precio;
+		 }
+
+		public double getPrecio() {
+			return precio;
+		}
 	  /**
 	   * Cambia el UPC del producto
 	   * @param upc String con el nuevo upc
