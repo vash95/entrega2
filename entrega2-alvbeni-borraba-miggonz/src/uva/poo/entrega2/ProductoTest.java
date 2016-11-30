@@ -9,6 +9,7 @@ public class ProductoTest {
 		Producto pipas = new Producto("pipas", 5.0, "123456789012");
 		assertEquals(pipas.getNombre(), "pipas");
 		assertEquals(5.0, pipas.getPrecio(), 0.01);
+		assertEquals(pipas.getIdentificador(),"123456789012");
 	}
 	@Test(expected=java.lang.AssertionError.class)
 	public void testProductoInvalidoNombreNulo(){

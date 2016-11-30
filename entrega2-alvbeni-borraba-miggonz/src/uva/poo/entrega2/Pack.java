@@ -27,6 +27,7 @@ public class Pack extends Vendible {
 		contenido = productos;
 		assert(getCantidad()>=2);	
 		assert(distintos());
+		//faltaria un nombre!= null y eso no?
 	}
 	/**
 	 * Comprueba que los productos de un pack son distintos
@@ -100,20 +101,40 @@ public class Pack extends Vendible {
 	/**
 	 * Devuelve la cantidad de productos que tiene un pack
 	 * Nota: se empieza a contar desde cero
-	 * @return
+	 * @return getContenido.length 
 	 */
 	public int getCantidad(){
 		return getContenido().length;
+	}
+	/**
+	 * Comprueba si un pack esta lleno
+	 * Un pack se considera lleno si su cantidad coincide con el numero de productos
+	 * Devuelve "true" si esta lleno
+	 * @return boolean
+	 */
+	public boolean PackLleno(){
+		int contadorProductos=getCantidad();
+		for(int i=0;i<getCantidad();i++){
+			if(getContenido()[i]==null)
+			contadorProductos--;
+		}
+		if(contadorProductos==getCantidad())
+			return true;
+		else{
+			return false;
+		}
 	}
 	/**
 	 * Informa de si el pack contiene o no el producto indicado
 	 * Devuelve "true" si el pack contiene el producto
 	 * @param p Producto buscado
 	 * @return boolean
-	 * @assert.pre p.equals(null) - El producto indicado no puede ser nulo
+	 * @assert.pre p!=null - El producto indicado no puede ser nulo
+	 * @assert.pre Packlleno - El pack tiene que estar lleno
 	 */
 	public boolean contiene(Producto p){
 		assert(p!=null);
+		assert(PackLleno());
 		boolean contiene=false;
 		for(int i=0;i<getCantidad();i++){
 			if(getContenido()[i].equals(p)){
