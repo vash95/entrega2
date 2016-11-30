@@ -18,18 +18,24 @@ public class prueba {
 		lista[0]=F;
 		lista[1]=b;
 		lista[2]=g;
+		
 		lista1[0]=g;
 		lista1[1]=F;
 		lista1[2]=b;
 
 		
 		
-		Pack a1 = new Pack("hola", 1, "123", lista);
-		Pack b1 = new Pack("hola", 1, "123", lista1);
+		Pack a1 = new Pack("hola", "123", lista);
+		Pack b1 = new Pack("hola", "123", lista1);
 		
-	
+		a1.agregaProducto(c);
 		
-		System.out.println(a1.equals(b1));
+		
+		System.out.println(a1.getCantidad());
+		
+		a1.quitaProducto(c);
+		
+		System.out.println(a1.getCantidad());
 		
 	}
 

@@ -2,7 +2,7 @@ package uva.poo.entrega2;
 /**
  * Practica 2 de Programacion Orientada a Objetos
  * Implementacion de packs de productos y servicios realcionados con la modificacion de los mismos
- * Un pack contienen más de un producto
+ * Un pack contienen mï¿½s de un producto
  * Los productos de un pack son distintos entre ellos
  * Un pack cuesta un 20% menos que la suma de los precios de sus productos individuales
  * Los packs heredan de la clase Vendible
@@ -50,13 +50,14 @@ public class Pack extends Vendible {
 	 * @assert.pre !contiene(p)- El producto a agregar no puede estar ya en el pack
 	 */
 	public void agregaProducto(Producto p){
+		int tam =getCantidad()+1;
 		assert(p!=null);
 		assert(!contiene(p));
-		Producto contenidoTmp[] = new Producto[getCantidad()+1];
+		Producto contenidoTmp[] = new Producto[tam];
 		for(int i=0;i<getCantidad();i++){
 			contenidoTmp[i]=getContenido()[i];
 			}
-		contenidoTmp[getCantidad()+1]=p;
+		contenidoTmp[tam-1]=p;
 		setContenido(contenidoTmp);
 	}
 	/**
