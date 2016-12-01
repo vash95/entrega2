@@ -17,7 +17,7 @@ public class prueba {
 		
 		lista[0]=F;
 		lista[1]=b;
-		lista[2]=g;
+	
 		
 		lista1[0]=g;
 		lista1[1]=F;

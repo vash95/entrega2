@@ -1,4 +1,8 @@
 package uva.poo.entrega2;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Practica 2 de Programacion Orientada a Objetos
  * Implementacion de packs de productos y servicios realcionados con la modificacion de los mismos
@@ -12,7 +16,8 @@ package uva.poo.entrega2;
  */
 public class Pack extends Vendible {
 	//Atributo de la clase
-	private Producto contenido[];
+	
+	private ArrayList<Producto> contenido;
 	/**
 	 * Inicializacion de un pack de productos con nombre, precio
 	 * @param nombre String con el nombre
@@ -24,7 +29,7 @@ public class Pack extends Vendible {
 	 */
 	public Pack(String nombre, String identificador, Producto[] productos){
 		super(nombre, identificador);
-		contenido = productos;
+		contenido = new ArrayList<Producto>(Arrays.asList(productos));
 		assert(getCantidad()>=2);	
 		assert(distintos());
 		//faltaria un nombre!= null y eso no?
@@ -35,11 +40,11 @@ public class Pack extends Vendible {
 	 * @return boolean
 	 */
 	public boolean distintos(){
-	for(int i=0;i<getCantidad()-1;i++){
-		for(int j=i+1;j<getCantidad();j++){
-			if(getContenido()[i].equals(getContenido()[j]))
-				return false;
-				}
+		for(int i=0;i<getContenido().size()-1;i++){
+			for(int j=i+1;j<getContenido().size();j++){
+				if(getContenido().get(i).equals(getContenido().get(j)))
+					return false;
+					}
 			}
 			return true;
 	}
@@ -50,15 +55,8 @@ public class Pack extends Vendible {
 	 * @assert.pre !contiene(p)- El producto a agregar no puede estar ya en el pack
 	 */
 	public void agregaProducto(Producto p){
-		int tam =getCantidad()+1;
-		assert(p!=null);
-		assert(!contiene(p));
-		Producto contenidoTmp[] = new Producto[tam];
-		for(int i=0;i<getCantidad();i++){
-			contenidoTmp[i]=getContenido()[i];
-			}
-		contenidoTmp[tam-1]=p;
-		setContenido(contenidoTmp);
+			assert(!contiene(p));
+			getContenido().add(p);
 	}
 	/**
 	 * Quita un producto del pack
@@ -69,17 +67,9 @@ public class Pack extends Vendible {
 	 */
 	public void quitaProducto(Producto p){
 		assert(p!=null);
-		assert(contiene(p));
+		assert(getContenido().contains(p));
 		assert(getCantidad()>2);
-		Producto contenidoTmp[] = new Producto[getCantidad()-1];
-		int j=0;
-		for(int i=0;i<getCantidad();i++){
-			if(!getContenido()[i].equals(p)){
-				contenidoTmp[j]=getContenido()[i];
-				j++;
-			}
-		}	
-		setContenido(contenidoTmp);
+		getContenido().remove(p);
 	}
 	/**
 	 * Agrega varios productos a un pack
@@ -105,58 +95,18 @@ public class Pack extends Vendible {
 	 * @return getContenido.length 
 	 */
 	public int getCantidad(){
-		return getContenido().length;
-	}
-	/**
-	 * Comprueba si un pack esta lleno
-	 * Un pack se considera lleno si su cantidad coincide con el numero de productos
-	 * Devuelve "true" si esta lleno
-	 * @return boolean
-	 */
-	public boolean PackLleno(){
-		int contadorProductos=getCantidad();
-		for(int i=0;i<getCantidad();i++){
-			if(getContenido()[i]==null)
-			contadorProductos--;
-		}
-		if(contadorProductos==getCantidad())
-			return true;
-		else{
-			return false;
-		}
-	}
-	/**
-	 * Informa de si el pack contiene o no el producto indicado
-	 * Devuelve "true" si el pack contiene el producto
-	 * @param p Producto buscado
-	 * @return boolean
-	 * @assert.pre p!=null - El producto indicado no puede ser nulo
-	 * @assert.pre Packlleno - El pack tiene que estar lleno
-	 */
-	public boolean contiene(Producto p){
-		assert(p!=null);
-		assert(PackLleno());
-		boolean contiene=false;
-		for(int i=0;i<getCantidad();i++){
-			if(getContenido()[i].equals(p)){
-				contiene=true;
-			}
-		}
-		return contiene;
+		return getContenido().size();
 	}
 	/**
 	 * Devuelve el pack
 	 * @return contenido array de productos
 	 */
-	public Producto[] getContenido() {
-		return contenido;
-	}
-	/**
-	 * Cambia los productos que contiene el pack 
-	 * @param contenido
-	 */
-	public void setContenido(Producto[] contenido) {
-		this.contenido=contenido;
+	public ArrayList<Producto> getContenido() {
+			   return contenido;
+		   }
+	public boolean contiene(Producto p){
+		assert(p.equals(null));
+		return getContenido().contains(p);
 	}
 	/**
 	 * Devuelve el precio del pack
