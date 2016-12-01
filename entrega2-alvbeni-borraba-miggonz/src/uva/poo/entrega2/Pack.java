@@ -3,6 +3,7 @@ package uva.poo.entrega2;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
 /**
  * Practica 2 de Programacion Orientada a Objetos
  * Implementacion de packs de productos y servicios realcionados con la modificacion de los mismos
@@ -32,7 +33,6 @@ public class Pack extends Vendible {
 		contenido = new ArrayList<Producto>(Arrays.asList(productos));
 		assert(getCantidad()>=2);	
 		assert(distintos());
-		//faltaria un nombre!= null y eso no?
 	}
 	/**
 	 * Comprueba que los productos de un pack son distintos
@@ -40,9 +40,10 @@ public class Pack extends Vendible {
 	 * @return boolean
 	 */
 	public boolean distintos(){
-		for(int i=0;i<getContenido().size()-1;i++){
-			for(int j=i+1;j<getContenido().size();j++){
+		for(int i=0;i<getCantidad()-1;i++){
+			for(int j=i+1;j<getCantidad();j++){
 				if(getContenido().get(i).equals(getContenido().get(j)))
+					
 					return false;
 					}
 			}
@@ -67,7 +68,7 @@ public class Pack extends Vendible {
 	 */
 	public void quitaProducto(Producto p){
 		assert(p!=null);
-		assert(getContenido().contains(p));
+		assert(contiene(p));
 		assert(getCantidad()>2);
 		getContenido().remove(p);
 	}
@@ -95,6 +96,7 @@ public class Pack extends Vendible {
 	 * @return getContenido.length 
 	 */
 	public int getCantidad(){
+		getContenido().remove(null);
 		return getContenido().size();
 	}
 	/**
@@ -112,7 +114,7 @@ public class Pack extends Vendible {
 	* @assert.pre p.equals(null)==false - El producto indicado no puede ser nulo
 	*/
 	public boolean contiene(Producto pedido){
-		assert(!pedido.equals(null));
+		assert(pedido!=null);
 		return getContenido().contains(pedido);
 	}
 	/**
