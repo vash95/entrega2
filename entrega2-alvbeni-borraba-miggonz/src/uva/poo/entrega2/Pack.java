@@ -6,7 +6,7 @@ import java.util.Arrays;
 /**
  * Practica 2 de Programacion Orientada a Objetos
  * Implementacion de packs de productos y servicios realcionados con la modificacion de los mismos
- * Un pack contienen m�s de un producto
+ * Un pack contienen por lo menos dos productos
  * Los productos de un pack son distintos entre ellos
  * Un pack cuesta un 20% menos que la suma de los precios de sus productos individuales
  * Los packs heredan de la clase Vendible
@@ -55,8 +55,8 @@ public class Pack extends Vendible {
 	 * @assert.pre !contiene(p)- El producto a agregar no puede estar ya en el pack
 	 */
 	public void agregaProducto(Producto p){
-			assert(!contiene(p));
-			getContenido().add(p);
+		assert(!contiene(p));
+		getContenido().add(p);
 	}
 	/**
 	 * Quita un producto del pack
@@ -99,14 +99,21 @@ public class Pack extends Vendible {
 	}
 	/**
 	 * Devuelve el pack
-	 * @return contenido array de productos
+	 * @return contenido arrayList de productos
 	 */
 	public ArrayList<Producto> getContenido() {
-			   return contenido;
-		   }
-	public boolean contiene(Producto p){
-		assert(p.equals(null));
-		return getContenido().contains(p);
+		return contenido;
+	}
+	/**
+	* Informa de si el pack contiene o no el producto indicado
+	* Devuelve "true" si el pack contiene el producto
+	* @param pedido Producto pedido
+	* @return boolean
+	* @assert.pre p.equals(null)==false - El producto indicado no puede ser nulo
+	*/
+	public boolean contiene(Producto pedido){
+		assert(!pedido.equals(null));
+		return getContenido().contains(pedido);
 	}
 	/**
 	 * Devuelve el precio del pack
@@ -154,12 +161,11 @@ public class Pack extends Vendible {
 	 * @return boolean
 	 */
 	public boolean equals(Pack otro){
-		  if(getNombre().equals(otro.getNombre()) && getPrecio()==otro.getPrecio()
-				  && getIdentificador().equals(otro.getIdentificador()) && getCantidad()==otro.getCantidad() && sonIgualesArrays(otro) ){
+		  if(getNombre().equals(otro.getNombre()) && getPrecio()==otro.getPrecio() && getIdentificador().equals(otro.getIdentificador()) && getCantidad()==otro.getCantidad() && sonIgualesArrays(otro) ){
 			  return true;
-			  }
-		  else{
+			  
+		  }else{
 			  return false;
 		  }
-	  }
+	}
 }

@@ -64,7 +64,7 @@ public class PackTest {
 		Pack miPack = new Pack("nombre","1",listaDeLaCompra);
 		Producto c=new Producto("COCACOLA", 10.0, "098765432112");
 		miPack.agregaProducto(c);
-		assertEquals(miPack.getContenido()[0],a);
+		assertEquals(miPack.getContenido().get(2),c);
 	}
 	//Y ESTOS DAN BIEN PORQUE SE SALE DEL ARRAY NO PORQUE COJA EL ERROR
 	@Test(expected=java.lang.AssertionError.class)

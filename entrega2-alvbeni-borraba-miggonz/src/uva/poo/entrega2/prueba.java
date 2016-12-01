@@ -14,28 +14,12 @@ public class prueba {
 		Producto d=new Producto("POLLO", 5.0, "123456789012");
 		Producto e=new Producto("PATATAS", 10.0, "098765432112");
 		Producto F=new Producto("COCACOLA", 10.0, "098765432112");
+		Pack mio = new Pack( "uyzizukulemto", "123", lista);
 		
 		lista[0]=F;
 		lista[1]=b;
-	
-		
-		lista1[0]=g;
-		lista1[1]=F;
-		lista1[2]=b;
-
-		
-		
-		Pack a1 = new Pack("hola", "123", lista);
-		Pack b1 = new Pack("hola", "123", lista1);
-		
-		a1.agregaProducto(c);
-		
-		
-		System.out.println(a1.getCantidad());
-		
-		a1.quitaProducto(c);
-		
-		System.out.println(a1.getCantidad());
+		mio.agregaProducto(e);
+		mio.toString();
 		
 	}
 
