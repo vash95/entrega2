@@ -17,27 +17,23 @@ import java.util.Arrays;
  */
 public class Pack extends Vendible {
 	//Atributo de la clase
-	
 	private ArrayList<Producto> contenido;
 	/**
 	 * Inicializacion de un pack de productos con nombre, precio
 	 * @param nombre String con el nombre
-	 * @param precio double precio (no se tiene en cuenta)
-	 * @param identificador String con el identificador
-	 * @param productos array con los Productos a meter en el pack
-	 * @assert.pre getContenido().length>2 - El pack debe tener como minimo 2 productos
+	 * @param productos Producto[] con los Productos a meter en el pack
+	 * @assert.pre getContenido().length>3 - El pack debe tener como minimo 2 productos
 	 * @assert.pre distintos==true - Los productos deben de ser distintos
 	 */
-	public Pack(String nombre, String identificador, Producto[] productos){
-		super(nombre, identificador);
+	public Pack(String nombre, Producto[] productos){
+		super(nombre);
 		contenido = new ArrayList<Producto>(Arrays.asList(productos));
 		assert(getCantidad()>=2);	
 		assert(distintos());
 	}
 	/**
 	 * Comprueba que los productos de un pack son distintos
-	 * Devuelve "true" si son distintos
-	 * @return boolean
+	 * @return boolean true si no hay productos repetidos
 	 */
 	public boolean distintos(){
 		for(int i=0;i<getCantidad()-1;i++){
@@ -56,6 +52,7 @@ public class Pack extends Vendible {
 	 * @assert.pre !contiene(p)- El producto a agregar no puede estar ya en el pack
 	 */
 	public void agregaProducto(Producto p){
+		assert(p!=null);
 		assert(!contiene(p));
 		getContenido().add(p);
 	}
@@ -76,24 +73,24 @@ public class Pack extends Vendible {
 	 * Agrega varios productos a un pack
 	 * @param p array de productos a agregar al pack
 	 */
-	public void agregaProductos(Producto p[]){
+	public void agregaVariosProductos(Producto p[]){
+		assert(p!=null);
 		for(Producto e:p){
 			agregaProducto(e);
 		}	
-	}
+	}//******************************************************TEST****
 	/**
 	 * Quita varios productos de un pack
 	 * @param p array de productos a quitar del pack
 	 */
-	public void quitaProductos(Producto p[]){
+	public void quitaVariosProductos(Producto p[]){
 		for(Producto e:p){
 			quitaProducto(e);
 		}
 	}
 	/**
 	 * Devuelve la cantidad de productos que tiene un pack
-	 * Nota: se empieza a contar desde cero
-	 * @return getContenido.length 
+	 * @return getContenido().size() int con la cantidad de productos
 	 */
 	public int getCantidad(){
 		getContenido().remove(null);
@@ -118,7 +115,7 @@ public class Pack extends Vendible {
 		return getContenido().contains(pedido);
 	}
 	/**
-	 * Devuelve el precio del pack
+	 * Devuelve el precio del pack/w
 	 */
 	@Override
 	public double getPrecio() {
@@ -127,7 +124,23 @@ public class Pack extends Vendible {
 			precioPack+=e.getPrecio();
 		}
 		precioPack-=precioPack*0.2;
+		precioPack=precioPack*100;
+		precioPack=Math.round(precioPack);
+		precioPack=precioPack/100;
 		return precioPack;
+	}
+
+	@Override
+	public String getIdentificador(){
+		String id;
+		int identificadorTmp=0;
+		for(Producto p:getContenido()){
+			int identificadorTmp2= Integer.parseInt(p.getIdentificador().substring(0, 9));
+			identificadorTmp+=identificadorTmp2;
+		}
+		identificadorTmp=identificadorTmp%1000000;
+		id=String.valueOf(identificadorTmp)+((char)((identificadorTmp%25)+65));
+		return id;
 	}
 	/**
 	 * Devuelve informacion sobre el pack

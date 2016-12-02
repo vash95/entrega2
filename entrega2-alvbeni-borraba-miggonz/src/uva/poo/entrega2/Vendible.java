@@ -9,7 +9,6 @@ package uva.poo.entrega2;
 public abstract class Vendible {
 	//Atributos de la clase
 	 private String nombre;
-	 private String identificador;
 	 /**
 	  * Inicializa una instancia de vendible con los valores dados como argumento
 	  * @param nombre String con el nombre
@@ -17,11 +16,10 @@ public abstract class Vendible {
 	  * @assert.pre nombre!=null - El nombre no puede ser nulo
 	  * @assert.pre nombre!="" - El nombre no puede ser una cadena vacia
 	  */
-	 public Vendible(String nombre,String identificador){
+	 public Vendible(String nombre){
 		 assert (nombre!=null);
 		 assert (!nombre.trim().equals("")); 
 		 this.nombre=nombre;
-		 this.identificador=identificador;
 	 }
      /**
       * Devuelve el nombre de la instancia vendible
@@ -50,14 +48,5 @@ public abstract class Vendible {
 	  * Devuelve el identificador de la instancia vendible
 	  * @return identificador String con el identificador
 	  */
-	 public String getIdentificador(){
-		 return identificador;
-	 }
-	  /**
-	   * Modifica el identificador de de la instancia vendible
-	   * @param id	String con el nuevo identificador
-	   */
-	  public void setIdentificador(String id){
-		  this.identificador = id;
-	  }
+	 abstract String getIdentificador();
 }

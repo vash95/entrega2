@@ -8,7 +8,7 @@ package uva.poo.entrega2;
  * @author borraba
  */
 public class Producto extends Vendible{
-	
+	private String upc;
 	private double precio;
 	/**
 	 * Inicializa una instancia de la clase Producto con los valores dados como argumento
@@ -24,8 +24,9 @@ public class Producto extends Vendible{
 	 * @assert.pre DigitoDeControlValido(upc) - EL UPC debe ser un numero y el ultimo digito
 	 */
 	  public Producto(String nombre, double precio, String upc){
-		  super(nombre,upc);
+		  super(nombre);
 		  this.precio=precio;
+		  this.upc=upc;
 		  assert (nombre!=null);
 		  assert (!nombre.trim().equals(""));
 		  assert (precio>0);
@@ -91,12 +92,15 @@ public class Producto extends Vendible{
 	   * @assert.pre upc.length()==12 - El UPC debe tener 12 d�gitos
 	   * @assert.pre DigitoDeControlValido(upc) - EL UPC debe ser un n�mero y el ultimo digito 
 	   */
-	  @Override
 	  public void setIdentificador(String upc){
 		  assert (upc!=null);
 		  assert (upc.length()==12);
 		  assert(DigitoDeControlValido(upc));
-		  super.setIdentificador(upc);
+		  this.upc=upc;
+	  }
+	  @Override
+	  public String getIdentificador(){
+		  return upc;
 	  }
 	  /**
 	   * Devuelve un String con la informaci�n del producto
