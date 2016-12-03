@@ -112,7 +112,7 @@ public class PackTest {
 		miPack.quitaProducto(cola);
 	}
 	@Test(expected=java.lang.AssertionError.class)
-	public void testQuitaProductoInvalidoPackPequeño() {
+	public void testQuitaProductoInvalidoPackPeque() {
 		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
 		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
 		Producto[] listaDeLaCompra = {pollo,patatas};

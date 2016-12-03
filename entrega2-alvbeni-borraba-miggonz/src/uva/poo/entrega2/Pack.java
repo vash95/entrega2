@@ -32,14 +32,14 @@ public class Pack extends Vendible {
 		assert(getCantidad()>=2);	
 		assert(distintos());
 	}
-	//comentalo migel la chupa
-	
 	private void eliminarNulls(){
 		int contadorNulls=0;
+		//cuenta el numero de null
 		for(Producto p:getContenido())
 			if(p==null){
 				contadorNulls++;
 			}
+		//borra los null que haya
 		for(int i=0;i<contadorNulls;i++){
 			getContenido().remove(null);
 		}
@@ -94,7 +94,6 @@ public class Pack extends Vendible {
 			}
 		}	
 	}
-	//******************************************************TEST****
 	/**
 	 * Quita varios productos de un pack
 	 * @param p array de productos a quitar del pack
@@ -123,14 +122,15 @@ public class Pack extends Vendible {
 	* Devuelve "true" si el pack contiene el producto
 	* @param pedido Producto pedido
 	* @return boolean
-	* @assert.pre p.equals(null)==false - El producto indicado no puede ser nulo
+	* @assert.pre pedido!=null - El producto a quitar no puede ser nulo
 	*/
 	public boolean contiene(Producto pedido){
 		assert(pedido!=null);
 		return getContenido().contains(pedido);
 	}
 	/**
-	 * Devuelve el precio del pack/w
+	 * Devuelve el precio en euros del pack
+	 * @return precioPack double con el precio
 	 */
 	@Override
 	public double getPrecio() {
@@ -144,7 +144,11 @@ public class Pack extends Vendible {
 		precioPack=precioPack/100;
 		return precioPack;
 	}
-
+	/**
+	 * Devuelve el identificador del pack
+	 * Cada pack tiene un identificador exclusivo
+	 * @return id, String con el identificador
+	 */
 	@Override
 	public String getIdentificador(){
 		String id;
@@ -158,14 +162,17 @@ public class Pack extends Vendible {
 		return id;
 	}
 	/**
-	 * Devuelve informacion sobre el pack
+	 * Devuelve datos sobre el pack
+	 * @return info String con los datos del pack
 	 */
 	@Override
 	public String toString(){
 		String contenedor="";
+		String info="";
 		for(Producto e:getContenido())
 			contenedor+=" "+e.toString();
-		return  "Nombre del Pack: "+getNombre()+", precio: "+getPrecio()+" euros, ID: "+getIdentificador()+" Contenido: (" +contenedor+")";
+		info="Nombre del Pack: "+getNombre()+", precio: "+getPrecio()+" euros, ID: "+getIdentificador()+" Contenido: (" +contenedor+")";
+		return info;
 	}
 	private boolean sonIgualesArrays(Pack otro){
 		//Comprueba si dos arrays de productos son iguales
@@ -185,10 +192,9 @@ public class Pack extends Vendible {
 	}
 	/**
 	 * Comprueba si dos packs son iguales
-	 * Dos packs se consideran iguales si contienen los mismos productos
-	 * Devuelve "true" si son iguales
+	 * Dos packs se consideran iguales solo si contienen los mismos productos
 	 * @param otro otro Pack para comparar
-	 * @return boolean
+	 * @return boolean true si los packs son iguales
 	 */
 	public boolean equals(Pack otro){
 		  if(getNombre().equals(otro.getNombre()) && getPrecio()==otro.getPrecio() && getIdentificador().equals(otro.getIdentificador()) && getCantidad()==otro.getCantidad() && sonIgualesArrays(otro) ){
