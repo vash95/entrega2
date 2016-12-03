@@ -27,8 +27,6 @@ public class Producto extends Vendible{
 		  super(nombre);
 		  this.precio=precio;
 		  this.upc=upc;
-		  assert (nombre!=null);
-		  assert (!nombre.trim().equals(""));
 		  assert (precio>0);
 		  assert (upc!=null);
 		  assert (upc.length()==12):"upc no valido";

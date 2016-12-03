@@ -28,8 +28,19 @@ public class Pack extends Vendible {
 	public Pack(String nombre, Producto[] productos){
 		super(nombre);
 		contenido = new ArrayList<Producto>(Arrays.asList(productos));
+		eliminarNulls();
 		assert(getCantidad()>=2);	
 		assert(distintos());
+	}
+	private void eliminarNulls(){
+		int contadorNulls=0;
+		for(Producto p:getContenido())
+			if(p==null){
+				contadorNulls++;
+			}
+		for(int i=0;i<contadorNulls;i++){
+			getContenido().remove(null);
+		}
 	}
 	/**
 	 * Comprueba que los productos de un pack son distintos
@@ -76,9 +87,12 @@ public class Pack extends Vendible {
 	public void agregaVariosProductos(Producto p[]){
 		assert(p!=null);
 		for(Producto e:p){
+			if(e!=null){
 			agregaProducto(e);
+			}
 		}	
-	}//******************************************************TEST****
+	}
+	//******************************************************TEST****
 	/**
 	 * Quita varios productos de un pack
 	 * @param p array de productos a quitar del pack
@@ -93,7 +107,6 @@ public class Pack extends Vendible {
 	 * @return getContenido().size() int con la cantidad de productos
 	 */
 	public int getCantidad(){
-		getContenido().remove(null);
 		return getContenido().size();
 	}
 	/**

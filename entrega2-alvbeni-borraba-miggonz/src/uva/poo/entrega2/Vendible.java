@@ -21,7 +21,7 @@ public abstract class Vendible {
 		 assert (!nombre.trim().equals("")); 
 		 this.nombre=nombre;
 	 }
-     /**
+	/**
       * Devuelve el nombre de la instancia vendible
       * @return nombre String con el nombre
       */
