@@ -42,6 +42,15 @@ public class PackTest {
 		listaDeLaCompra[1]=b;
 		Pack miPack = new Pack(null,listaDeLaCompra);
 	}
+	@Test(expected=java.lang.AssertionError.class)
+	public void testPackInvalidoNombreVacio(){
+		Producto a=new Producto("POLLO", 5.0, "123456789012");
+		Producto[] listaDeLaCompra = new Producto[2];
+		Producto b=new Producto("PATATAS", 10.0, "098765432112");
+		listaDeLaCompra[0]=a;
+		listaDeLaCompra[1]=b;
+		Pack miPack = new Pack("",listaDeLaCompra);
+	}
 	@Test
 	public void testDistintosValido() {
 		Producto a=new Producto("POLLO", 5.0, "123456789012");
@@ -132,6 +141,17 @@ public class PackTest {
 		miPack.agregaVariosProductos(ampliacion);
 		assertEquals(miPack.getCantidad(),4);
 	}
+	@Test(expected=java.lang.AssertionError.class)
+	public void testAgregaVariosInvalidoArrayNull(){
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
+		Producto cola=new Producto("COCACOLA", 10.0, "098765432112");
+		Producto golosinas = new Producto ("OSITOS HARIBO", 0.99, "123456789012");
+		Producto[] listaDeLaCompra = {pollo,patatas};
+		Pack miPack = new Pack("nombre",listaDeLaCompra);
+		Producto[] ampliacion = null;
+		miPack.agregaVariosProductos(ampliacion);
+	}
 	@Test
 	public void testQuitaVariosProductoValido(){
 		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
@@ -140,9 +160,20 @@ public class PackTest {
 		Producto golosinas = new Producto ("OSITOS HARIBO", 0.99, "123456789012");
 		Producto[] listaDeLaCompra = {pollo,patatas,cola,golosinas};
 		Pack miPack = new Pack("nombre",listaDeLaCompra);
-		Producto[] ampliacion = {cola,golosinas};
-		miPack.quitaVariosProductos(ampliacion);
+		Producto[] quitar = {cola,golosinas};
+		miPack.quitaVariosProductos(quitar);
 		assertEquals(miPack.getCantidad(),2);
+	}
+	@Test(expected=java.lang.AssertionError.class)
+	public void testQuitaVariosInvalidoArrayNull(){
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
+		Producto cola=new Producto("COCACOLA", 10.0, "098765432112");
+		Producto golosinas = new Producto ("OSITOS HARIBO", 0.99, "123456789012");
+		Producto[] listaDeLaCompra = {pollo,patatas};
+		Pack miPack = new Pack("nombre",listaDeLaCompra);
+		Producto[] quitar = null;
+		miPack.agregaVariosProductos(quitar);
 	}
 	@Test
 	public void testGetCantidadValido() {
@@ -168,4 +199,38 @@ public class PackTest {
 		Pack miPack = new Pack("nombre",listaDeLaCompra);
 		miPack.contiene(null);
 	}
+	@Test
+	public void testGetPrecioValido() {
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
+		Producto[] listaDeLaCompra = {pollo,patatas};
+		Pack miPack = new Pack("nombre",listaDeLaCompra);
+		assertEquals(miPack.getPrecio(),12.0, 0.01);
+	}
+	@Test
+	public void testGetIdentificadorValido() {
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
+		Producto[] listaDeLaCompra = {pollo,patatas};
+		Pack miPack = new Pack("nombre",listaDeLaCompra);
+		assertEquals(miPack.getIdentificador(),"222221V");
+	}
+	@Test
+	public void testToStringValido() {
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
+		Producto[] listaDeLaCompra = {pollo,patatas};
+		Pack miPack = new Pack("nombre",listaDeLaCompra);
+		assertEquals(miPack.toString(),"Nombre del Pack: nombre, precio: 12.0 euros, ID: 222221V Contenido: ( Nombre del producto: POLLO, precio: 5.0 euros, UPC: 123456789012 Nombre del producto: PATATAS, precio: 10.0 euros, UPC: 098765432112)");
+	}
+	public void testEqualsValido() {
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
+		Producto[] listaDeLaCompra = {pollo,patatas};
+		Pack PrimerPack = new Pack("nombreDistinto",listaDeLaCompra);
+		Producto[] listaDeLaCompra2 = {pollo,patatas};
+		Pack SegundoPack = new Pack("nombre", listaDeLaCompra2);
+		assertTrue(PrimerPack.equals(SegundoPack));
+	}
+	
 }

@@ -85,6 +85,7 @@ public class Pack extends Vendible {
 	/**
 	 * Agrega varios productos a un pack
 	 * @param p array de productos a agregar al pack
+	 * @assert.pre p!=null - El array de productos producto a agregar no puede ser nulo
 	 */
 	public void agregaVariosProductos(Producto p[]){
 		assert(p!=null);
@@ -97,8 +98,10 @@ public class Pack extends Vendible {
 	/**
 	 * Quita varios productos de un pack
 	 * @param p array de productos a quitar del pack
+	 * @assert.pre p!=null - El array de productos producto a quitar no puede ser nulo
 	 */
 	public void quitaVariosProductos(Producto p[]){
+		assert(p!=null);
 		for(Producto e:p){
 			quitaProducto(e);
 		}
@@ -192,7 +195,7 @@ public class Pack extends Vendible {
 	}
 	/**
 	 * Comprueba si dos packs son iguales
-	 * Dos packs se consideran iguales solo si contienen los mismos productos
+	 * Dos packs se consideran iguales solo si contienen los mismos productos, con el mismo precio e identificador
 	 * @param otro otro Pack para comparar
 	 * @return boolean true si los packs son iguales
 	 */
