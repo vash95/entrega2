@@ -32,7 +32,8 @@ public class Pack extends Vendible {
 		assert(getCantidad()>=2);	
 		assert(distintos());
 	}
-	//comentalo to
+	//comentalo migel la chupa?
+	
 	private void eliminarNulls(){
 		int contadorNulls=0;
 		for(Producto p:getContenido())
