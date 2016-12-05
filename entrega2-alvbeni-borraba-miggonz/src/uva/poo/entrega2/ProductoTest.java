@@ -103,7 +103,7 @@ public class ProductoTest {
 	public void testProductoVendibleInicializarValido(){
 		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
 		Vendible pollo_vendible = (Vendible) pollo;
-		assertEquals(pollo.getNombre(),"POLLO");
+		assertEquals(pollo_vendible.getNombre(),"POLLO");
 	}
 	@Test(expected=java.lang.AssertionError.class)
 	public void testProductoVendibleInicializarInvalidoNombreNull(){
