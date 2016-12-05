@@ -1,7 +1,7 @@
 package uva.poo.entrega2;
 /**
  * Practica 2 de Programacion Orientada a Objetos
- * Implementacion de instancias abstractas que son vendibles
+ * Implementacion de instancias abstractas que son vendibles, con un atributo nombre
  * @author alvbeni
  * @author miggonz
  * @author borraba

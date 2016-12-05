@@ -223,14 +223,97 @@ public class PackTest {
 		Pack miPack = new Pack("nombre",listaDeLaCompra);
 		assertEquals(miPack.toString(),"Nombre del Pack: nombre, precio: 12.0 euros, ID: 222221V Contenido: ( Nombre del producto: POLLO, precio: 5.0 euros, UPC: 123456789012 Nombre del producto: PATATAS, precio: 10.0 euros, UPC: 098765432112)");
 	}
+	@Test
 	public void testEqualsValido() {
 		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
 		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
 		Producto[] listaDeLaCompra = {pollo,patatas};
-		Pack PrimerPack = new Pack("nombreDistinto",listaDeLaCompra);
+		Pack PrimerPack = new Pack("nombre",listaDeLaCompra);
 		Producto[] listaDeLaCompra2 = {pollo,patatas};
 		Pack SegundoPack = new Pack("nombre", listaDeLaCompra2);
 		assertTrue(PrimerPack.equals(SegundoPack));
 	}
+	//TEST COMO VENDIBLE
+	@Test
+	public void testPackVendibleInicializarValido(){
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
+		Producto[] listaDeLaCompra = {pollo,patatas};
+		Pack miPack = new Pack("nombre",listaDeLaCompra);
+		Vendible objeto = (Vendible) miPack;
+		assertEquals(miPack.getNombre(),"nombre");
+	}
+	@Test(expected=java.lang.AssertionError.class)
+	public void testPackVendibleInicializarInvalidoNombreNull(){
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
+		Producto[] listaDeLaCompra = {pollo,patatas};
+		Pack miPack = new Pack(null,listaDeLaCompra);
+		Vendible objeto = (Vendible) miPack;
+	}
+	@Test(expected=java.lang.AssertionError.class)
+	public void testPackVendibleInicializarInvalidoNombrVacio(){
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
+		Producto[] listaDeLaCompra = {pollo,patatas};
+		Pack miPack = new Pack("",listaDeLaCompra);
+		Vendible objeto = (Vendible) miPack;
+	}
+	@Test
+	public void testPackVendibleGetNombreValido(){
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
+		Producto[] listaDeLaCompra = {pollo,patatas};
+		Pack miPack = new Pack("nombre",listaDeLaCompra);
+		Vendible objeto = (Vendible) miPack;
+		assertEquals(miPack.getNombre(),"nombre");
+	}
+	@Test
+	public void testPackVendibleGetPrecioValido(){
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
+		Producto[] listaDeLaCompra = {pollo,patatas};
+		Pack miPack = new Pack("nombre",listaDeLaCompra);
+		Vendible objeto = (Vendible) miPack;
+		assertEquals(miPack.getPrecio(),12.0, 0.01);
+	}
+	@Test
+	public void testPackVendibleSetNombreValido(){
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
+		Producto[] listaDeLaCompra = {pollo,patatas};
+		Pack miPack = new Pack("nombre",listaDeLaCompra);
+		Vendible objeto_vendible = (Vendible) miPack;
+		objeto_vendible.setNombre("cambio");
+		assertEquals(miPack.getNombre(),"cambio");
+	}
+	@Test(expected=java.lang.AssertionError.class)
+	public void testPackVendibleSetNombreInvalidoNombreNull(){
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
+		Producto[] listaDeLaCompra = {pollo,patatas};
+		Pack miPack = new Pack("nombre",listaDeLaCompra);
+		Vendible objeto_vendible = (Vendible) miPack;
+		objeto_vendible.setNombre(null);
+	}
+	@Test(expected=java.lang.AssertionError.class)
+	public void testPackVendibleSetNombreInvalidoNombreVacio(){
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
+		Producto[] listaDeLaCompra = {pollo,patatas};
+		Pack miPack = new Pack("nombre",listaDeLaCompra);
+		Vendible objeto_vendible = (Vendible) miPack;
+		objeto_vendible.setNombre("");
+	}
+	@Test
+	public void testPackVendibleGetIdentificadorValido(){
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
+		Producto[] listaDeLaCompra = {pollo,patatas};
+		Pack miPack = new Pack("nombre",listaDeLaCompra);
+		Vendible objeto_vendible = (Vendible) miPack;
+		assertEquals(objeto_vendible.getIdentificador(),"222221V");
+	}
+	
 	
 }

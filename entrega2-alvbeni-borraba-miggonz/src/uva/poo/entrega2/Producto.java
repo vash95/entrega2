@@ -16,8 +16,6 @@ public class Producto extends Vendible{
 	 * @param nombre String con el nombre
 	 * @param precio double que indica el precio de un producto en euros
 	 * @param upc String con los digitos 12 del UPC, incluyendo el de control
-	 * @assert.pre nombre!=null - El nombre no puede ser nulo
-	 * @assert.pre nombre!="" - El nombre no puede ser una cadena vacia
 	 * @assert.pre precio>0 - El precio debe ser estrictamente positivo
 	 * @assert.pre upc!=null - El UPC no puede ser nulo
 	 * @assert.pre upc.length()==12 - El UPC debe tener 12 dígitos

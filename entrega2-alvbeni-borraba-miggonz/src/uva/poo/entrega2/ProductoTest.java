@@ -45,6 +45,22 @@ public class ProductoTest {
 		assertTrue(a.DigitoDeControlValido(a.getIdentificador()));
 	}
 	@Test
+	public void testSetPrecioValido() {
+		Producto p = new Producto ("hola",1.0,"123456789012");
+		p.setPrecio(5.0);
+		assertEquals(5.0, p.getPrecio(), 0.01);	
+	}
+	@Test
+	public void testGetPrecioValido() {
+		Producto p = new Producto ("hola",1.0,"123456789012");
+		assertEquals(1.0, p.getPrecio(), 0.01);	
+	}
+	@Test
+	public void testGetIdentificadorValido() {
+		Producto p = new Producto ("hola",1.0,"123456789012");
+		assertEquals(p.getIdentificador(),"123456789012");
+	}
+	@Test
 	public void testSetIdentificadorValido() {
 		Producto correcto = new Producto("pipas", 5.0, "123456789012");
 		correcto.setIdentificador("123456789012");
@@ -82,11 +98,60 @@ public class ProductoTest {
 		assertNotSame(p,q);
 		assertTrue(q.equals(p));
 	}
-	public void testSetPrecio() {
-		fail("Not yet implemented");
+	//Test como Vendible
+	@Test
+	public void testProductoVendibleInicializarValido(){
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Vendible pollo_vendible = (Vendible) pollo;
+		assertEquals(pollo.getNombre(),"POLLO");
+	}
+	@Test(expected=java.lang.AssertionError.class)
+	public void testProductoVendibleInicializarInvalidoNombreNull(){
+		Producto pollo=new Producto(null, 5.0, "123456789012");
+		Vendible pollo_vendible = (Vendible) pollo;
+	}
+	@Test(expected=java.lang.AssertionError.class)
+	public void testProductoVendibleInicializarInvalidoNombreVacio(){
+		Producto pollo=new Producto("", 5.0, "123456789012");
+		Vendible pollo_vendible = (Vendible) pollo;
 	}
 	@Test
-	public void testGetIdentificador() {
-		fail("Not yet implemented");
+	public void testProductoVendibleGetNombreValido(){
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Vendible pollo_vendible = (Vendible) pollo;
+		assertEquals(pollo_vendible.getNombre(),"POLLO");
 	}
+	@Test
+	public void testProductoVendibleGetPrecioValido(){
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Vendible pollo_vendible = (Vendible) pollo;
+		assertEquals(5.0, pollo_vendible.getPrecio(), 0.01);	
+	}
+	@Test
+	public void testProductoVendibleGetIdentificadorValido(){
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Vendible pollo_vendible = (Vendible) pollo;
+		assertEquals(pollo_vendible.getIdentificador(),"123456789012");
+	}
+	@Test
+	public void testProductoVendibleSetNombreValido(){
+		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
+		Vendible pollo_vendible = (Vendible) pollo;
+		pollo_vendible.setNombre("nuevo");
+		assertEquals(pollo_vendible.getNombre(),"nuevo");
+	}
+	@Test(expected=java.lang.AssertionError.class)
+	public void testProductoVendibleSetNombreInvalidoNombreNull(){
+		Producto pollo=new Producto("", 5.0, "123456789012");
+		Vendible pollo_vendible = (Vendible) pollo;
+		pollo_vendible.setNombre(null);
+	}
+	@Test(expected=java.lang.AssertionError.class)
+	public void testProductoVendibleSetNombreInvalidoNombreVacio(){
+		Producto pollo=new Producto("", 5.0, "123456789012");
+		Vendible pollo_vendible = (Vendible) pollo;
+		pollo_vendible.setNombre("");
+	}
+	
+
 }
