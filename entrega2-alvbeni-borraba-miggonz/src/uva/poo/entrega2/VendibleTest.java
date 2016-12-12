@@ -3,13 +3,15 @@ package uva.poo.entrega2;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
+/**
+ * Práctica 2 de Programación Orientada a Objetos
+ * La clase vendible es abstracta, por lo que para probarla, utilizamos referencias de las clases que heredan de ella, probando así su uso polimórficamente
+ * @author alvbeni
+ * @author miggonz
+ * @author borraba
+ */
 public class VendibleTest {
-
-	//La clase vendible es abstracta, por lo que para probarla, utilizamos referencias 
-	//de las clases que heredan de ella, y probamos su uso polimÓrficamente
-	
-	//TEST COMO Pack
+	//Test de instancias pack como vendibles
 	@Test
 	public void testPackVendibleInicializarValido(){
 		Producto pollo=new Producto("POLLO", 5.0, "123456789012");
@@ -90,7 +92,7 @@ public class VendibleTest {
 		Vendible objeto_vendible = miPack;
 		assertEquals(objeto_vendible.getIdentificador(),"222221V");
 	}
-	//Test como Producto
+	//Test de instancias producto como vendible
 	@Test
 	public void testProductoVendibleInicializarValido(){
 		Producto pollo=new Producto("POLLO", 5.0, "123456789012");

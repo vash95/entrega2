@@ -1,7 +1,7 @@
 package uva.poo.entrega2;
 /**
- * Practica 2 de Programacion Orientada a Objetos
- * Implementacion de productos con nombre, precio y UCP.
+ * Práctica 2 de Programación Orientada a Objetos
+ * Implementación de productos con nombre, precio y UCP.
  * Los productos heredan de la la clase Vendible
  * @author alvbeni
  * @author miggonz
@@ -12,14 +12,14 @@ public class Producto extends Vendible{
 	private double precio;
 	/**
 	 * Inicializa una instancia de la clase Producto con los valores dados como argumento
-	 * El digito de control se autentifica automaticamente
+	 * El dígito de control se autentifica automáticamente
 	 * @param nombre String con el nombre
 	 * @param precio double que indica el precio de un producto en euros
-	 * @param upc String con los digitos 12 del UPC, incluyendo el de control
+	 * @param upc String con los dígitos 12 del UPC, incluyendo el de control
 	 * @assert.pre precio>0 - El precio debe ser estrictamente positivo
 	 * @assert.pre upc!=null - El UPC no puede ser nulo
-	 * @assert.pre upc.length()==12 - El UPC debe tener 12 dÃ­gitos
-	 * @assert.pre DigitoDeControlValido(upc) - EL UPC debe ser un numero y el ultimo digito
+	 * @assert.pre upc.length()==12 - El UPC debe tener 12 dígitos
+	 * @assert.pre DigitoDeControlValido(upc) - EL UPC debe ser un número y el último digito
 	 */
 	  public Producto(String nombre, double precio, String upc){
 		  super(nombre);
@@ -31,7 +31,7 @@ public class Producto extends Vendible{
 		  assert (DigitoDeControlValido(upc));
 	  }
 	  /**
-	   * Comprueba que el digito de control del UPC es correcto
+	   * Comprueba que el dígito de control del UPC es válido dados sus anteriores caracteres
 	   * Devuelve "true" si es correcto
 	   * @param upc String del UPC del producto
 	   * @return boolean
@@ -68,7 +68,7 @@ public class Producto extends Vendible{
 		    }return valido;
 	  }
 	  /**
-	   * Cambia el precio de la instancia vendible
+	   * Cambia el precio del producto
 	   * @param precio double con el nuevo precio 
 	   */
 	  public void setPrecio(double precio) {
@@ -94,12 +94,15 @@ public class Producto extends Vendible{
 		  assert(DigitoDeControlValido(upc));
 		  this.upc=upc;
 	  }
+	  /**
+	   * Devuelve el identificador del producto, es decir, su UPC
+	   */
 	  @Override
 	  public String getIdentificador(){
 		  return upc;
 	  }
 	  /**
-	   * Devuelve un String con la informaciï¿½n del producto
+	   * Devuelve un String con la información del producto
 	   */
 	  @Override
 	  public String toString(){

@@ -3,9 +3,9 @@ package uva.poo.entrega2;
 import java.util.ArrayList;
 import java.util.Arrays;
 /**
- * Práctica 2 de Programacion Orientada a Objetos
- * Implementacion de packs de productos y servicios realcionados con la modificacion de los mismos
- * Un pack contienen por lo menos dos productos
+ * Práctica 2 de Programación Orientada a Objetos
+ * Implementacion de packs de productos y servicios realcionados con la modificación de los mismos
+ * Un pack contienen como mínimo dos productos
  * Los productos de un pack son distintos entre ellos
  * Un pack cuesta un 20% menos que la suma de los precios de sus productos individuales
  * Los packs heredan de la clase Vendible
@@ -17,10 +17,10 @@ public class Pack extends Vendible {
 	//Atributo de la clase
 	private ArrayList<Producto> contenido;
 	/**
-	 * Inicializacion de un pack de productos con nombre, precio
+	 * Inicialización de un pack de productos con nombre, precio
 	 * @param nombre String con el nombre
-	 * @param productos Producto[] con los Productos a meter en el pack
-	 * @assert.pre getContenido().length>3 - El pack debe tener como minimo 2 productos
+	 * @param productos array con los Productos a meter en el pack
+	 * @assert.pre @code getCantidad()>=2 - El pack debe tener como minimo 2 productos
 	 * @assert.pre distintos==true - Los productos deben de ser distintos
 	 */
 	public Pack(String nombre, Producto[] productos){
@@ -148,6 +148,7 @@ public class Pack extends Vendible {
 	/**
 	 * Devuelve el identificador del pack
 	 * Cada pack tiene un identificador exclusivo
+	 * Si se añade un producto a un pack, cambia su identificador
 	 * @return id, String con el identificador
 	 */
 	@Override
@@ -193,7 +194,7 @@ public class Pack extends Vendible {
 	}
 	/**
 	 * Comprueba si dos packs son iguales
-	 * Dos packs se consideran iguales solo si contienen los mismos productos, con el mismo precio e identificador
+	 * Dos packs se consideran iguales solo si tienen el mismo nombre, precio e identificador, por lo que deben contener también los mismos productos
 	 * @param otro otro Pack para comparar
 	 * @return boolean true si los packs son iguales
 	 */
