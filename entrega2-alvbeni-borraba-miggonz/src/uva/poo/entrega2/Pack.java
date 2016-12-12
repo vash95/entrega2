@@ -2,10 +2,8 @@ package uva.poo.entrega2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
-
 /**
- * Practica 2 de Programacion Orientada a Objetos
+ * Práctica 2 de Programacion Orientada a Objetos
  * Implementacion de packs de productos y servicios realcionados con la modificacion de los mismos
  * Un pack contienen por lo menos dos productos
  * Los productos de un pack son distintos entre ellos
