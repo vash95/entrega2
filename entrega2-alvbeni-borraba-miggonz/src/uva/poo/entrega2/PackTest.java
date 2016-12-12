@@ -240,7 +240,7 @@ public class PackTest {
 		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
 		Producto[] listaDeLaCompra = {pollo,patatas};
 		Pack miPack = new Pack("nombre",listaDeLaCompra);
-		Vendible objeto = (Vendible) miPack;
+		Vendible objeto = miPack;
 		assertEquals(objeto.getNombre(),"nombre");
 	}
 	@Test(expected=java.lang.AssertionError.class)
@@ -249,7 +249,7 @@ public class PackTest {
 		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
 		Producto[] listaDeLaCompra = {pollo,patatas};
 		Pack miPack = new Pack(null,listaDeLaCompra);
-		Vendible objeto = (Vendible) miPack;
+		Vendible objeto = miPack;
 	}
 	@Test(expected=java.lang.AssertionError.class)
 	public void testPackVendibleInicializarInvalidoNombrVacio(){
@@ -257,7 +257,7 @@ public class PackTest {
 		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
 		Producto[] listaDeLaCompra = {pollo,patatas};
 		Pack miPack = new Pack("",listaDeLaCompra);
-		Vendible objeto = (Vendible) miPack;
+		Vendible objeto = miPack;
 	}
 	@Test
 	public void testPackVendibleGetNombreValido(){
@@ -265,7 +265,7 @@ public class PackTest {
 		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
 		Producto[] listaDeLaCompra = {pollo,patatas};
 		Pack miPack = new Pack("nombre",listaDeLaCompra);
-		Vendible objeto = (Vendible) miPack;
+		Vendible objeto = miPack;
 		assertEquals(objeto.getNombre(),"nombre");
 	}
 	@Test
@@ -274,7 +274,7 @@ public class PackTest {
 		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
 		Producto[] listaDeLaCompra = {pollo,patatas};
 		Pack miPack = new Pack("nombre",listaDeLaCompra);
-		Vendible objeto = (Vendible) miPack;
+		Vendible objeto = miPack;
 		assertEquals(objeto.getPrecio(),12.0, 0.01);
 	}
 	@Test
@@ -283,7 +283,7 @@ public class PackTest {
 		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
 		Producto[] listaDeLaCompra = {pollo,patatas};
 		Pack miPack = new Pack("nombre",listaDeLaCompra);
-		Vendible pack_vendible = (Vendible) miPack;
+		Vendible pack_vendible = miPack;
 		pack_vendible.setNombre("cambio");
 		assertEquals(pack_vendible.getNombre(),"cambio");
 	}
@@ -293,7 +293,7 @@ public class PackTest {
 		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
 		Producto[] listaDeLaCompra = {pollo,patatas};
 		Pack miPack = new Pack("nombre",listaDeLaCompra);
-		Vendible objeto_vendible = (Vendible) miPack;
+		Vendible objeto_vendible = miPack;
 		objeto_vendible.setNombre(null);
 	}
 	@Test(expected=java.lang.AssertionError.class)
@@ -302,7 +302,7 @@ public class PackTest {
 		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
 		Producto[] listaDeLaCompra = {pollo,patatas};
 		Pack miPack = new Pack("nombre",listaDeLaCompra);
-		Vendible objeto_vendible = (Vendible) miPack;
+		Vendible objeto_vendible = miPack;
 		objeto_vendible.setNombre("");
 	}
 	@Test
@@ -311,7 +311,7 @@ public class PackTest {
 		Producto patatas=new Producto("PATATAS", 10.0, "098765432112");
 		Producto[] listaDeLaCompra = {pollo,patatas};
 		Pack miPack = new Pack("nombre",listaDeLaCompra);
-		Vendible objeto_vendible = (Vendible) miPack;
+		Vendible objeto_vendible = miPack;
 		assertEquals(objeto_vendible.getIdentificador(),"222221V");
 	}
 	
