@@ -6,8 +6,8 @@ import org.junit.Test;
 
 public class VendibleTest {
 
-	//La clase vendiblle s abstracta, por lo que para probarla, utilizamos referencias 
-	//de las clases que heredan de ella, y probamos su uso polimorficamente
+	//La clase vendible es abstracta, por lo que para probarla, utilizamos referencias 
+	//de las clases que heredan de ella, y probamos su uso polim”rficamente
 	
 	//TEST COMO Pack
 	@Test
