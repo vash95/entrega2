@@ -35,8 +35,8 @@ public abstract class Vendible {
       */
 	 public abstract double getPrecio();
 	 /**
-	  * Cambia el nombre del producto
-	  * @param nombre String nombre del producto
+	  * Cambia el nombre de la instancia vendible
+	  * @param nombre String con el nuevo nombre
 	  * @assert.pre nombre!=null - El nombre no puede ser nulo
 	  * @assert.pre nombre!="" - El nombre no puede ser una cadena vacía
 	  */

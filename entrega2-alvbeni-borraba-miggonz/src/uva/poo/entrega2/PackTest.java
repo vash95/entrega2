@@ -1,5 +1,11 @@
 package uva.poo.entrega2;
-//Pack test
+/**
+ * Práctica 2 de Programación Orientada a Objetos
+ * Clase de pruebas de la clase Producto
+ * @author alvbeni
+ * @author miggonz
+ * @author borraba
+ */
 import static org.junit.Assert.*;
 
 import org.junit.Test;

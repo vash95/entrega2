@@ -17,10 +17,10 @@ public class Pack extends Vendible {
 	//Atributo de la clase
 	private ArrayList<Producto> contenido;
 	/**
-	 * Inicialización de un pack de productos con nombre, precio
+	 * Inicialización de un pack de productos
 	 * @param nombre String con el nombre
 	 * @param productos array con los Productos a meter en el pack
-	 * @assert.pre @code getCantidad()>=2 - El pack debe tener como minimo 2 productos
+	 * @assert.pre (@code getCantidad()>=2) - El pack debe tener como minimo 2 productos
 	 * @assert.pre distintos==true - Los productos deben de ser distintos
 	 * @see uva.poo.entrega2.Vendible#Vendible(String)
 	 */
@@ -73,7 +73,7 @@ public class Pack extends Vendible {
 	 * @param p Producto a quitar del pack
 	 * @assert.pre p!=null - El producto a quitar no puede ser nulo
 	 * @assert.pre !contiene(p)- El producto a quitar no puede estar ya en el pack
-	 * @assert.pre getCantidad()>2 - El pack no puede quedarse con menos de dos productos
+	 * @assert.pre (@code getCantidad()>2) - El pack no puede quedarse con menos de dos productos
 	 */
 	public void quitaProducto(Producto p){
 		assert(p!=null);

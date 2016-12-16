@@ -16,7 +16,7 @@ public class Producto extends Vendible{
 	 * @param nombre String con el nombre
 	 * @param precio double que indica el precio de un producto en euros
 	 * @param upc String con los dígitos 12 del UPC, incluyendo el de control
-	 * @assert.pre precio>0 - El precio debe ser estrictamente positivo
+	 * @assert.pre (@code precio>0) - El precio debe ser estrictamente positivo
 	 * @assert.pre upc!=null - El UPC no puede ser nulo
 	 * @assert.pre upc.length()==12 - El UPC debe tener 12 dígitos
 	 * @assert.pre DigitoDeControlValido(upc) - EL UPC debe ser un número y el último digito
@@ -71,8 +71,10 @@ public class Producto extends Vendible{
 	  /**
 	   * Cambia el precio del producto
 	   * @param precio double con el nuevo precio 
+	   * @assert.pre (@code precio>0) - El precio debe ser estrictamente positivo
 	   */
 	  public void setPrecio(double precio) {
+		  assert(precio>0);
 		  this.precio = precio;
 	  }
 	  /**
