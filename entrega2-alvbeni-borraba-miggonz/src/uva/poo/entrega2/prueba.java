@@ -11,7 +11,11 @@ public class prueba {
 		listaDeLaCompra[0]=a;
 		listaDeLaCompra[2]=b;
 		Pack miPack = new Pack("miPack",listaDeLaCompra);
-		
+		Vendible h = miPack;
+		Vendible j = a;
+		System.out.println(j);
+		System.out.println(h.equals(j));
+		System.out.println(h);
 		System.out.println(miPack.getPrecio());
 	
 		//System.out.println(miPack.getCantidad());

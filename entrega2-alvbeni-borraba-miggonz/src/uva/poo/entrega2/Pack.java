@@ -22,6 +22,7 @@ public class Pack extends Vendible {
 	 * @param productos array con los Productos a meter en el pack
 	 * @assert.pre @code getCantidad()>=2 - El pack debe tener como minimo 2 productos
 	 * @assert.pre distintos==true - Los productos deben de ser distintos
+	 * @see uva.poo.entrega2.Vendible#Vendible(String)
 	 */
 	public Pack(String nombre, Producto[] productos){
 		super(nombre);
@@ -194,16 +195,19 @@ public class Pack extends Vendible {
 	}
 	/**
 	 * Comprueba si dos packs son iguales
-	 * Dos packs se consideran iguales solo si tienen el mismo nombre, precio e identificador, por lo que deben contener también los mismos productos
+	 * Dos packs se consideran iguales si tienen el mismo nombre, precio e identificador, por lo que deben contener también productos que sean iguales
 	 * @param otro otro Pack para comparar
-	 * @return boolean true si los packs son iguales
+	 * @return resultado true si los packs son iguales
 	 */
-	public boolean equals(Pack otro){
-		  if(getNombre().equals(otro.getNombre()) && getPrecio()==otro.getPrecio() && getIdentificador().equals(otro.getIdentificador()) && getCantidad()==otro.getCantidad() && sonIgualesArrays(otro) ){
-			  return true;
-			  
-		  }else{
-			  return false;
-		  }
-	}
+	@Override
+	public boolean equals(Object otro){
+	    boolean resultado=false;
+	    if(otro instanceof Pack){
+	      Pack a=(Pack) otro;
+	      if(getNombre().equals(a.getNombre()) && getPrecio()==a.getPrecio() && getIdentificador().equals(a.getIdentificador()) && getCantidad()==a.getCantidad() && sonIgualesArrays(a) ){
+	    	  resultado = true;
+	      }
+	    }
+	    return resultado;
+	  }
 }

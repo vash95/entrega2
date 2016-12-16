@@ -231,6 +231,7 @@ public class PackTest {
 		Pack PrimerPack = new Pack("nombre",listaDeLaCompra);
 		Producto[] listaDeLaCompra2 = {pollo,patatas};
 		Pack SegundoPack = new Pack("nombre", listaDeLaCompra2);
+		assertNotSame(PrimerPack,SegundoPack);
 		assertTrue(PrimerPack.equals(SegundoPack));
 	}
 

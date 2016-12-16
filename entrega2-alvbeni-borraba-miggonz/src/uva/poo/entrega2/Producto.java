@@ -20,6 +20,7 @@ public class Producto extends Vendible{
 	 * @assert.pre upc!=null - El UPC no puede ser nulo
 	 * @assert.pre upc.length()==12 - El UPC debe tener 12 dígitos
 	 * @assert.pre DigitoDeControlValido(upc) - EL UPC debe ser un número y el último digito
+	 * @see uva.poo.entrega2.Vendible#Vendible(String)
 	 */
 	  public Producto(String nombre, double precio, String upc){
 		  super(nombre);
@@ -110,16 +111,18 @@ public class Producto extends Vendible{
 	  }
 	  /**
 	   * Indica si el producto es igual a otro dado como argumento
-	   * Devuelve "true" si son iguales
+	   * Dos productos son iguales si tienen el mismo nombre, precio y UPC
 	   * @param otro Producto para comparar
-	   * @return boolean
+	   * @return resultado devuelve "true" si son iguales
 	   */
-	  public boolean equals(Producto otro){
-		  if(getNombre()==otro.getNombre() && getPrecio()==otro.getPrecio() && getIdentificador()==otro.getIdentificador()){
-			  return true;
+	  public boolean equals(Object otro){
+		  boolean resultado=false;
+		  if(otro instanceof Producto){
+			  Producto a=(Producto) otro;
+			  if(getNombre()==a.getNombre() && getPrecio()==a.getPrecio() && getIdentificador()==a.getIdentificador()){
+				  resultado= true;
 			  }
-		  else{
-			  return false;
 		  }
+		  return resultado;
 	  }
 }
